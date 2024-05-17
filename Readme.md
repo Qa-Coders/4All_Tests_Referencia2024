@@ -14,10 +14,10 @@ Antes de executar os testes, certifique-se de ter os seguintes componentes insta
 
 1. Clone o repositório:
 
-   ```sh
-   git clone https://github.com/seu-usuario/repo-teste-penetracao.git
+```sh
+   git clone https://github.com/Qa-Coders/4All_Tests_Referencia2024.git
    cd repo-teste-penetracao
-
+ ```
 
 ```bash
     pip install robotframework

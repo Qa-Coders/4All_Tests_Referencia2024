@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.3 on win32)" generated="20240517 20:02:55.640" rpa="false" schemaversion="4">
+<suite id="s1" name="Security" source="D:\Automacao\AllTest\Security.robot">
+<test id="s1-t1" name="Send Valid Login Request" line="13">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${BASE_URL}</arg>
+<arg>verify=${False}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240517 20:02:55.840" level="INFO">Creating Session using : alias=session, url=https://develop.qacoders-academy.com.br/api/login, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240517 20:02:55.840" endtime="20240517 20:02:55.841"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${data}</var>
+<arg>mail=${VALID_MAIL}</arg>
+<arg>password=${VALID_PASSWORD}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240517 20:02:55.842" level="INFO">${data} = {'mail': 'sysadmin@qacoders.com', 'password': '1234@Test'}</msg>
+<status status="PASS" starttime="20240517 20:02:55.841" endtime="20240517 20:02:55.842"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>session</arg>
+<arg>/</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20240517 20:02:56.093" level="INFO">POST Request : url=https://develop.qacoders-academy.com.br/api/login/ 
+ path_url=/api/login/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '58', 'Content-Type': 'application/json'} 
+ body=b'{"mail": "sysadmin@qacoders.com", "password": "1234@Test"}' 
+ </msg>
+<msg timestamp="20240517 20:02:56.093" level="INFO">POST Response : url=https://develop.qacoders-academy.com.br/api/login/ 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Fri, 17 May 2024 23:02:58 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'ETag': 'W/"536-ROoN+QRKmbHFCuv4FKttKef3HhA"', 'Content-Encoding': 'gzip'} 
+ body={"msg":"Olá Qa-Coders-SYSADMIN, autenticação autorizada com sucesso!","user":{"_id":"655e91a1748c617229bcd64e","fullName":"Qa-Coders-SYSADMIN","mail":"sysadmin@qacoders.com","password":"$2b$10$6/EvGom7BqM5ecGYaXCms.ysx1xLahOZi/Tzx1Ofoe8eeAVnmhBsy","accessProfile":"SYSADMIN","cpf":"11111111111","status":true,"audit":[{"registeredBy":{"userId":"111111111111111111","userLogin":"sysadmin@qacoders.com"},"registrationDate":"quarta-feira, 22/11/2023, 20:41:20 BRT","registrationNumber":"01","companyId":"Qa.Coders","_id":"655e91a1748c617229bcd64f"}],"__v":0},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTVlOTFhMTc0OGM2MTcyMjliY2Q2NGUiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2L0V2R29tN0JxTTVlY0dZYVhDbXMueXN4MXhMYWhPWmkvVHp4MU9mb2U4ZWVBVm5taEJzeSIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoicXVhcnRhLWZlaXJhLCAyMi8xMS8yMDIzLCAyMDo0MToyMCBCUlQiLCJyZWdpc3RyYXRpb25OdW1iZXIiOiIwMSIsImNvbXBhbnlJZCI6IlFhLkNvZGVycyIsIl9pZCI6IjY1NWU5MWExNzQ4YzYxNzIyOWJjZDY0ZiJ9XSwiX192IjowLCJpYXQiOjE3MTU5ODY5NzgsImV4cCI6MTcxNjA3MzM3OH0.sCpQyzIKqwMIHqMvRB3450ajVVsouAjXO-K2yL1pUH4"} 
+ </msg>
+<msg timestamp="20240517 20:02:56.093" level="INFO">C:\Users\Qa.Coders\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'develop.qacoders-academy.com.br'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20240517 20:02:56.094" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240517 20:02:55.842" endtime="20240517 20:02:56.094"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Status Code: ${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240517 20:02:56.095" level="INFO">Status Code: 200</msg>
+<status status="PASS" starttime="20240517 20:02:56.095" endtime="20240517 20:02:56.095"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Response: ${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240517 20:02:56.097" level="INFO">Response: {'msg': 'Olá Qa-Coders-SYSADMIN, autenticação autorizada com sucesso!', 'user': {'_id': '655e91a1748c617229bcd64e', 'fullName': 'Qa-Coders-SYSADMIN', 'mail': 'sysadmin@qacoders.com', 'password': '$2b$10$6/EvGom7BqM5ecGYaXCms.ysx1xLahOZi/Tzx1Ofoe8eeAVnmhBsy', 'accessProfile': 'SYSADMIN', 'cpf': '11111111111', 'status': True, 'audit': [{'registeredBy': {'userId': '111111111111111111', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'quarta-feira, 22/11/2023, 20:41:20 BRT', 'registrationNumber': '01', 'companyId': 'Qa.Coders', '_id': '655e91a1748c617229bcd64f'}], '__v': 0}, 'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTVlOTFhMTc0OGM2MTcyMjliY2Q2NGUiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2L0V2R29tN0JxTTVlY0dZYVhDbXMueXN4MXhMYWhPWmkvVHp4MU9mb2U4ZWVBVm5taEJzeSIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoicXVhcnRhLWZlaXJhLCAyMi8xMS8yMDIzLCAyMDo0MToyMCBCUlQiLCJyZWdpc3RyYXRpb25OdW1iZXIiOiIwMSIsImNvbXBhbnlJZCI6IlFhLkNvZGVycyIsIl9pZCI6IjY1NWU5MWExNzQ4YzYxNzIyOWJjZDY0ZiJ9XSwiX192IjowLCJpYXQiOjE3MTU5ODY5NzgsImV4cCI6MTcxNjA3MzM3OH0.sCpQyzIKqwMIHqMvRB3450ajVVsouAjXO-K2yL1pUH4'}</msg>
+<status status="PASS" starttime="20240517 20:02:56.096" endtime="20240517 20:02:56.097"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20240517 20:02:56.097" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20240517 20:02:56.097" endtime="20240517 20:02:56.097"/>
+</kw>
+<doc>Enviar uma requisição de login válida e verificar a resposta.</doc>
+<status status="PASS" starttime="20240517 20:02:55.839" endtime="20240517 20:02:56.098"/>
+</test>
+<test id="s1-t2" name="Test Weak Password" line="22">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${BASE_URL}</arg>
+<arg>verify=${False}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240517 20:02:56.101" level="INFO">Creating Session using : alias=session, url=https://develop.qacoders-academy.com.br/api/login, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240517 20:02:56.101" endtime="20240517 20:02:56.102"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${data}</var>
+<arg>mail=${VALID_MAIL}</arg>
+<arg>password=123456</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240517 20:02:56.103" level="INFO">${data} = {'mail': 'sysadmin@qacoders.com', 'password': '123456'}</msg>
+<status status="PASS" starttime="20240517 20:02:56.102" endtime="20240517 20:02:56.103"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>session</arg>
+<arg>/</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20240517 20:02:56.368" level="INFO">POST Request : url=https://develop.qacoders-academy.com.br/api/login/ 
+ path_url=/api/login/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '55', 'Content-Type': 'application/json'} 
+ body=b'{"mail": "sysadmin@qacoders.com", "password": "123456"}' 
+ </msg>
+<msg timestamp="20240517 20:02:56.368" level="INFO">POST Response : url=https://develop.qacoders-academy.com.br/api/login/ 
+ status=400, reason=Bad Request 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Fri, 17 May 2024 23:02:58 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '55', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'ETag': 'W/"37-9q6p8iabt/LayQQx7+su7bYXDck"'} 
+ body={"alert":"E-mail ou senha informados são inválidos."} 
+ </msg>
+<msg timestamp="20240517 20:02:56.368" level="INFO">C:\Users\Qa.Coders\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'develop.qacoders-academy.com.br'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20240517 20:02:56.370" level="FAIL">HTTPError: 400 Client Error: Bad Request for url: https://develop.qacoders-academy.com.br/api/login/</msg>
+<status status="FAIL" starttime="20240517 20:02:56.103" endtime="20240517 20:02:56.372"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Status Code: ${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20240517 20:02:56.372" endtime="20240517 20:02:56.373"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Response: ${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20240517 20:02:56.373" endtime="20240517 20:02:56.373"/>
+</kw>
+<kw name="Should Not Be Equal As Strings" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are equal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20240517 20:02:56.374" endtime="20240517 20:02:56.374"/>
+</kw>
+<doc>Verificar se a API aceita uma senha comum/fraca.</doc>
+<status status="FAIL" starttime="20240517 20:02:56.100" endtime="20240517 20:02:56.374">HTTPError: 400 Client Error: Bad Request for url: https://develop.qacoders-academy.com.br/api/login/</status>
+</test>
+<test id="s1-t3" name="Test SQL Injection" line="31">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${BASE_URL}</arg>
+<arg>verify=${False}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240517 20:02:56.377" level="INFO">Creating Session using : alias=session, url=https://develop.qacoders-academy.com.br/api/login, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240517 20:02:56.377" endtime="20240517 20:02:56.378"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${data}</var>
+<arg>mail=${VALID_MAIL}</arg>
+<arg>password=' OR \'1\'=\'1'</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240517 20:02:56.379" level="INFO">${data} = {'mail': 'sysadmin@qacoders.com', 'password': "' OR '1'='1'"}</msg>
+<status status="PASS" starttime="20240517 20:02:56.378" endtime="20240517 20:02:56.379"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>session</arg>
+<arg>/</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20240517 20:02:56.630" level="INFO">POST Request : url=https://develop.qacoders-academy.com.br/api/login/ 
+ path_url=/api/login/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '61', 'Content-Type': 'application/json'} 
+ body=b'{"mail": "sysadmin@qacoders.com", "password": "\' OR \'1\'=\'1\'"}' 
+ </msg>
+<msg timestamp="20240517 20:02:56.630" level="INFO">POST Response : url=https://develop.qacoders-academy.com.br/api/login/ 
+ status=400, reason=Bad Request 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Fri, 17 May 2024 23:02:58 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '55', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'ETag': 'W/"37-9q6p8iabt/LayQQx7+su7bYXDck"'} 
+ body={"alert":"E-mail ou senha informados são inválidos."} 
+ </msg>
+<msg timestamp="20240517 20:02:56.630" level="INFO">C:\Users\Qa.Coders\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'develop.qacoders-academy.com.br'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20240517 20:02:56.631" level="FAIL">HTTPError: 400 Client Error: Bad Request for url: https://develop.qacoders-academy.com.br/api/login/</msg>
+<status status="FAIL" starttime="20240517 20:02:56.379" endtime="20240517 20:02:56.632"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Status Code: ${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20240517 20:02:56.633" endtime="20240517 20:02:56.633"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Response: ${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20240517 20:02:56.633" endtime="20240517 20:02:56.633"/>
+</kw>
+<kw name="Should Not Be Equal As Strings" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are equal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20240517 20:02:56.634" endtime="20240517 20:02:56.634"/>
+</kw>
+<doc>Verificar se a API é vulnerável a SQL Injection.</doc>
+<status status="FAIL" starttime="20240517 20:02:56.376" endtime="20240517 20:02:56.634">HTTPError: 400 Client Error: Bad Request for url: https://develop.qacoders-academy.com.br/api/login/</status>
+</test>
+<test id="s1-t4" name="Test Brute Force Protection" line="40">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${BASE_URL}</arg>
+<arg>verify=${False}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240517 20:02:56.638" level="INFO">Creating Session using : alias=session, url=https://develop.qacoders-academy.com.br/api/login, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240517 20:02:56.637" endtime="20240517 20:02:56.638"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${invalid_passwords}</var>
+<arg>wrongpassword1</arg>
+<arg>wrongpassword2</arg>
+<arg>wrongpassword3</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20240517 20:02:56.639" level="INFO">${invalid_passwords} = ['wrongpassword1', 'wrongpassword2', 'wrongpassword3']</msg>
+<status status="PASS" starttime="20240517 20:02:56.638" endtime="20240517 20:02:56.639"/>
+</kw>
+<for flavor="IN">
+<var>${password}</var>
+<value>@{invalid_passwords}</value>
+<iter>
+<var name="${password}">wrongpassword1</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${data}</var>
+<arg>mail=${VALID_MAIL}</arg>
+<arg>password=${password}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240517 20:02:56.640" level="INFO">${data} = {'mail': 'sysadmin@qacoders.com', 'password': 'wrongpassword1'}</msg>
+<status status="PASS" starttime="20240517 20:02:56.639" endtime="20240517 20:02:56.640"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>session</arg>
+<arg>/</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20240517 20:02:56.893" level="INFO">POST Request : url=https://develop.qacoders-academy.com.br/api/login/ 
+ path_url=/api/login/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '63', 'Content-Type': 'application/json'} 
+ body=b'{"mail": "sysadmin@qacoders.com", "password": "wrongpassword1"}' 
+ </msg>
+<msg timestamp="20240517 20:02:56.893" level="INFO">POST Response : url=https://develop.qacoders-academy.com.br/api/login/ 
+ status=400, reason=Bad Request 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Fri, 17 May 2024 23:02:59 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '55', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'ETag': 'W/"37-9q6p8iabt/LayQQx7+su7bYXDck"'} 
+ body={"alert":"E-mail ou senha informados são inválidos."} 
+ </msg>
+<msg timestamp="20240517 20:02:56.893" level="INFO">C:\Users\Qa.Coders\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'develop.qacoders-academy.com.br'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20240517 20:02:56.894" level="FAIL">HTTPError: 400 Client Error: Bad Request for url: https://develop.qacoders-academy.com.br/api/login/</msg>
+<status status="FAIL" starttime="20240517 20:02:56.640" endtime="20240517 20:02:56.895"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Status Code: ${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20240517 20:02:56.895" endtime="20240517 20:02:56.895"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Response: ${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20240517 20:02:56.895" endtime="20240517 20:02:56.895"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} in [401, 403]</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" starttime="20240517 20:02:56.895" endtime="20240517 20:02:56.896"/>
+</kw>
+<status status="FAIL" starttime="20240517 20:02:56.639" endtime="20240517 20:02:56.896"/>
+</iter>
+<status status="FAIL" starttime="20240517 20:02:56.639" endtime="20240517 20:02:56.896"/>
+</for>
+<doc>Simular tentativas de login com várias senhas para verificar proteção contra força bruta.</doc>
+<status status="FAIL" starttime="20240517 20:02:56.636" endtime="20240517 20:02:56.896">HTTPError: 400 Client Error: Bad Request for url: https://develop.qacoders-academy.com.br/api/login/</status>
+</test>
+<status status="FAIL" starttime="20240517 20:02:55.641" endtime="20240517 20:02:56.898"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="3" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="3" skip="0" id="s1" name="Security">Security</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
